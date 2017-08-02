@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestManager", "QuestManager\QuestManager.csproj", "{E19CFFDA-1E97-44D3-BF1A-06565BE7BFDC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestManagement", "QuestManagement\QuestManagement.csproj", "{E19CFFDA-1E97-44D3-BF1A-06565BE7BFDC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestGen", "QuestGen\QuestGen.csproj", "{C8E048EB-8947-41C2-898D-D1A73D43F885}"
 EndProject

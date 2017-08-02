@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuestManagement.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuestGen.Infrastructure
 {
-  public class GameLog
+  public class GameLog : IGameLog
   {
     private static GameLog Instance = null;
     public static GameLog instance

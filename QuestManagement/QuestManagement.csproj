@@ -7,8 +7,8 @@
     <ProjectGuid>{E19CFFDA-1E97-44D3-BF1A-06565BE7BFDC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QuestManager</RootNamespace>
-    <AssemblyName>QuestManager</AssemblyName>
+    <RootNamespace>QuestManagement</RootNamespace>
+    <AssemblyName>QuestManagement</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,7 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IQuestPerformer.cs" />
+    <Compile Include="Abstract\IGameLog.cs" />
+    <Compile Include="Abstract\QuestPerformerAbstract.cs" />
     <Compile Include="Concrete\GetItem.cs" />
     <Compile Include="Concrete\KillMonsters.cs" />
     <Compile Include="Concrete\QuestManager.cs" />

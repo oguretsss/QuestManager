@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using QuestManager.Abstract;
+using QuestManagement.Abstract;
 using System.Threading.Tasks;
 
-namespace QuestManager.Concrete
+namespace QuestManagement.Concrete
 {
   public class Quest
   {
-    private IQuestPerformer performer;
+    private QuestPerformerAbstract performer;
     public string QuestName { get; set; }
     public string QuestDescription { get; set; }
     public List<QuestStep> Steps { get; set; }
@@ -18,15 +18,31 @@ namespace QuestManager.Concrete
     public bool RewardGiven { get; set; } = false;
     public bool Complete { get; set; } = false;
 
-    public Quest(IQuestPerformer p)
+    public Quest(QuestPerformerAbstract p)
     {
       performer = p;
+      Steps = new List<QuestStep>();
     }
 
-    public void CheckProgress()
+    public void CheckProgress(QuestPerformerAbstract p)
     {
-      Steps.ForEach(x => x.CheckProgress(performer));
+      //Steps.ForEach(x => x.CheckProgress(p));
+      bool checkNext = true;
+      foreach (QuestStep step in Steps)
+      {
+        if (checkNext)
+        {
+          step.CheckProgress(p);
+          if (!step.Complete)
+          {
+            checkNext = false;
+            break;
+          }
+        }
+      }
       Complete = Steps.Count(x => !x.Complete) == 0;
+      Console.WriteLine("Check Progress!");
+      Console.WriteLine(ToString());
     }
 
     public string GiveReward()

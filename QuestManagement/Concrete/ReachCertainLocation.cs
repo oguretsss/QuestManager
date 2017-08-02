@@ -1,11 +1,11 @@
-﻿using QuestManager.Abstract;
+﻿using QuestManagement.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuestManager.Concrete
+namespace QuestManagement.Concrete
 {
   public class ReachCertainLocation : QuestStep
   {
@@ -18,8 +18,9 @@ namespace QuestManager.Concrete
       targetLocation = loc;
     }
 
-    public override void CheckProgress(IQuestPerformer p)
+    public override void CheckProgress(QuestPerformerAbstract p)
     {
+      if (Complete) return;
       Coordinates perfLocation = p.GetCurrentLocation();
       Complete = perfLocation.X == targetLocation.X && perfLocation.Y == targetLocation.Y;
     }

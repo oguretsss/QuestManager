@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuestManager.Abstract
+namespace QuestManagement.Abstract
 {
   public abstract class QuestStep
   {
@@ -12,7 +12,7 @@ namespace QuestManager.Abstract
     public bool Complete { get; set; }
     protected string targetDescription;
 
-    public abstract void CheckProgress(IQuestPerformer p);
+    public abstract void CheckProgress(QuestPerformerAbstract p);
     public abstract string GetTargetDescription();
   }
 }

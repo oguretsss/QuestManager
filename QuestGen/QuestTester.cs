@@ -1,6 +1,6 @@
 ﻿using QuestGen.Infrastructure;
-using QuestManager.Concrete;
-using QuestManager.Abstract;
+using QuestManagement.Concrete;
+using QuestManagement.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,25 +11,34 @@ namespace QuestGen
 {
   public class QuestTester
   {
-    static List<Quest> quests;
+    static QuestManager questMan;
     static Player player;
 
     static void Main()
     {
       GameLog l = new GameLog();
       GameLog.instance.Log("Howdy ho!");
-
-      quests = new List<Quest>();
       player = new Player();
 
-      InitQuests();
+      questMan = new QuestManager(player, GameLog.instance);
+      questMan.StartQuest("Quest number two");
+      questMan.StartQuest("Quest number three");
+      //questMan.LoadActive();
+
+      //Move player
+      player.AddItemToInventory("Zombie shit");
+      player.AddItemToInventory("Horse hair");
+      player.Move(9, 1);
+      player.AddItemToInventory("Horse hair");
+      player.Move(-9, -1);
+      player.Move(-6, 33);
       Console.ReadKey();
     }
 
 
     private static void InitQuests()
     {
-      Quest first = new Quest(player);
+      /*Quest first = new Quest(player);
       first.QuestDescription = "This is the first test quest, where you should find certain item, then reach certain location and then kill some shitty monsters!";
       first.QuestName = "My very first quest";
       first.ReceivedLocation = new Coordinates(2, 15);
@@ -51,7 +60,7 @@ namespace QuestGen
       first.Steps.Add(c);
 
       GameLog.instance.Log("Quests initialized!");
-      GameLog.instance.Log(first.ToString());
+      GameLog.instance.Log(first.ToString());*/
     }
   }
 }

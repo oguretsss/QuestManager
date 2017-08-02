@@ -1,7 +1,7 @@
 ﻿using System;
-using QuestManager.Abstract;
+using QuestManagement.Abstract;
 
-namespace QuestManager.Concrete
+namespace QuestManagement.Concrete
 {
   public class KillMonsters : QuestStep
   {
@@ -15,8 +15,9 @@ namespace QuestManager.Concrete
       MonsterAmount = amount;
     }
 
-    public override void CheckProgress(IQuestPerformer p)
+    public override void CheckProgress(QuestPerformerAbstract p)
     {
+      if (Complete) return;
       Complete = p.GetKillCount(MonsterName) >= MonsterAmount;
     }
 

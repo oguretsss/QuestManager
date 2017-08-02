@@ -1,5 +1,5 @@
-﻿using QuestManager.Abstract;
-using QuestManager.Concrete;
+﻿using QuestManagement.Abstract;
+using QuestManagement.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace QuestGen
 {
-  public class Player : IQuestPerformer
+  public class Player : QuestPerformerAbstract
   {
+   
     private Coordinates location;
     private Dictionary<string, int> killTracker;
     private Dictionary<string, int> inventory;
@@ -28,12 +29,12 @@ namespace QuestGen
       inventory["Dynamite"] = 3;
 
     }
-    public Coordinates GetCurrentLocation()
+    public override Coordinates GetCurrentLocation()
     {
       return location;
     }
 
-    public int GetKillCount(string monsterName)
+    public override int GetKillCount(string monsterName)
     {
       int count = 0;
       killTracker.TryGetValue(monsterName, out count);
@@ -41,11 +42,45 @@ namespace QuestGen
       return count;
     }
 
-    public int GetItemCount(string itemName)
+    public override int GetItemCount(string itemName)
     {
       int count = 0;
       inventory.TryGetValue(itemName, out count);
       return count;
+    }
+
+    public void KillMonster(string name)
+    {
+      if (killTracker.ContainsKey(name))
+      {
+        killTracker[name] += 1;
+      }
+      else
+      {
+        killTracker[name] = 1;
+      }
+      OnStateChanged(this);
+    }
+
+    public void Move(int deltaX, int deltaY)
+    {
+      location.X += deltaX;
+      location.Y += deltaY;
+      Console.WriteLine("Player move! New location is {0} : {1} ", location.X, location.Y);
+      OnStateChanged(this);
+    }
+
+    public void AddItemToInventory(string name)
+    {
+      if (inventory.ContainsKey(name))
+      {
+        inventory[name] += 1;
+      }
+      else
+      {
+        inventory[name] = 1;
+      }
+      OnStateChanged(this);
     }
   }
 }

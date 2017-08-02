@@ -49,9 +49,9 @@
     <Compile Include="QuestTester.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QuestManager\QuestManager.csproj">
+    <ProjectReference Include="..\QuestManagement\QuestManagement.csproj">
       <Project>{E19CFFDA-1E97-44D3-BF1A-06565BE7BFDC}</Project>
-      <Name>QuestManager</Name>
+      <Name>QuestManagement</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
