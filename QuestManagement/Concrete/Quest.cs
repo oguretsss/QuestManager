@@ -24,7 +24,7 @@ namespace QuestManagement.Concrete
       Steps = new List<QuestStep>();
     }
 
-    public void CheckProgress(QuestPerformerAbstract p)
+    public void CheckProgress()
     {
       //Steps.ForEach(x => x.CheckProgress(p));
       bool checkNext = true;
@@ -32,7 +32,7 @@ namespace QuestManagement.Concrete
       {
         if (checkNext)
         {
-          step.CheckProgress(p);
+          step.CheckProgress();
           if (!step.Complete)
           {
             checkNext = false;
@@ -41,8 +41,9 @@ namespace QuestManagement.Concrete
         }
       }
       Complete = Steps.Count(x => !x.Complete) == 0;
-      Console.WriteLine("Check Progress!");
-      Console.WriteLine(ToString());
+      Console.WriteLine("Check Progress! "+ QuestName);
+      if (Complete)
+        Console.WriteLine(ToString());
     }
 
     public string GiveReward()

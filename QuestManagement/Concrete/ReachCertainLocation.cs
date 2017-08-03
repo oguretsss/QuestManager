@@ -12,16 +12,17 @@ namespace QuestManagement.Concrete
 
     private Coordinates targetLocation;
 
-    public ReachCertainLocation(string targetDesc, Coordinates loc)
+    public ReachCertainLocation(string targetDesc, Coordinates loc, QuestPerformerAbstract p)
     {
       targetDescription = targetDesc;
       targetLocation = loc;
+      player = p;
     }
 
-    public override void CheckProgress(QuestPerformerAbstract p)
+    public override void CheckProgress()
     {
       if (Complete) return;
-      Coordinates perfLocation = p.GetCurrentLocation();
+      Coordinates perfLocation = player.GetCurrentLocation();
       Complete = perfLocation.X == targetLocation.X && perfLocation.Y == targetLocation.Y;
     }
 

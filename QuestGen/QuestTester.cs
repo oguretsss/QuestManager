@@ -20,9 +20,11 @@ namespace QuestGen
       GameLog.instance.Log("Howdy ho!");
       player = new Player();
 
-      questMan = new QuestManager(player, GameLog.instance);
+      questMan = new QuestManager(player);
       questMan.StartQuest("Quest number two");
       questMan.StartQuest("Quest number three");
+      questMan.StartQuest("My very first quest");
+      questMan.StartQuest("My very first quest");
       //questMan.LoadActive();
 
       //Move player
@@ -32,6 +34,12 @@ namespace QuestGen
       player.AddItemToInventory("Horse hair");
       player.Move(-9, -1);
       player.Move(-6, 33);
+      player.KillMonster("Bandit");
+      player.KillMonster("Bandit");
+      player.KillMonster("Bandit");
+      Console.WriteLine("The quest should be completed below");
+      player.KillMonster("Bandit");
+
       Console.ReadKey();
     }
 

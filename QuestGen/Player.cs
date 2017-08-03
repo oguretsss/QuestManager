@@ -27,6 +27,7 @@ namespace QuestGen
       inventory = new Dictionary<string, int>();
       inventory["Uranium battery"] = 2;
       inventory["Dynamite"] = 3;
+      inventory["Zombie shit"] = 9;
 
     }
     public override Coordinates GetCurrentLocation()
@@ -59,7 +60,7 @@ namespace QuestGen
       {
         killTracker[name] = 1;
       }
-      OnStateChanged(this);
+      OnStateChanged();
     }
 
     public void Move(int deltaX, int deltaY)
@@ -67,7 +68,7 @@ namespace QuestGen
       location.X += deltaX;
       location.Y += deltaY;
       Console.WriteLine("Player move! New location is {0} : {1} ", location.X, location.Y);
-      OnStateChanged(this);
+      OnStateChanged();
     }
 
     public void AddItemToInventory(string name)
@@ -80,7 +81,8 @@ namespace QuestGen
       {
         inventory[name] = 1;
       }
-      OnStateChanged(this);
+      OnStateChanged();
     }
+
   }
 }

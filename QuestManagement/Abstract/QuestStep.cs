@@ -11,8 +11,9 @@ namespace QuestManagement.Abstract
     public string Description { get; set; }
     public bool Complete { get; set; }
     protected string targetDescription;
+    protected QuestPerformerAbstract player;
 
-    public abstract void CheckProgress(QuestPerformerAbstract p);
+    public abstract void CheckProgress();
     public abstract string GetTargetDescription();
   }
 }

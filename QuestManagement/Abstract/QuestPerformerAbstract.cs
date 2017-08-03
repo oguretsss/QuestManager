@@ -9,15 +9,15 @@ namespace QuestManagement.Abstract
 {
   public abstract class QuestPerformerAbstract
   {
-    public delegate void StateChangedHandler(QuestPerformerAbstract p);
+    public delegate void StateChangedHandler();
     public event StateChangedHandler OnPlayerStateChanged;
 
     public abstract Coordinates GetCurrentLocation();
     public abstract int GetItemCount(string itemName);
     public abstract int GetKillCount(string monsterName);
-    protected virtual void OnStateChanged(QuestPerformerAbstract p)
+    protected virtual void OnStateChanged()
     {
-      OnPlayerStateChanged?.Invoke(p);
+      OnPlayerStateChanged?.Invoke();
     }
   }
 }
